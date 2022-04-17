@@ -10,7 +10,9 @@ module.exports = {
   },
   devtool: "inline-source-map",
   devServer: {
-    static: "./dist",
+    port: 3001,
+    open: true,
+    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -26,7 +28,11 @@ module.exports = {
       },
       {
         test: /\.s[ac]ss$/i,
-        use: ["style-loader", "css-loader", "sass-loader"],
+        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
+      },
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader", "sass-loader", "postcss-loader"],
       },
     ],
   },
